@@ -33,12 +33,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "./index-src.html",
+      template: "./index.html",
       chunks: ["main"],
     }),
     new HtmlWebpackPlugin({
       filename: "google-custom.html",
-      template: "./google-custom-src.html",
+      template: "./google-custom.html",
       chunks: ["google-custom"],
     })
   ]
