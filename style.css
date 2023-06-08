@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 1.25rem;
+}
+
+.iframe-container {
+    flex-grow: 1;
+    display: flex;
+}
+
+.iframe-container > * {
+    flex: 1 1 auto;
+}
+
+body {
+    display: flex;
+    height: 98svh;
+    flex-direction: column;
+}
+
+div.menu {
+    height: fit-content;
+    background-color: rgb(44, 149, 89);
+    padding: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+div.hints {
+    display: flex;
+    max-width: 69%;
+    margin-inline-end: 10px;
+    gap: 5px;
+}
+
+.hint {
+    min-width: 30px;
+}
