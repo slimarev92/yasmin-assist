@@ -13,4 +13,4 @@ setTimeout(() => {
         searchButton.click();
     };
     
-}, 300);
+}, 1000);

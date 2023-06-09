@@ -19,7 +19,7 @@ module.exports = (_, argv) => {
       path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
-      extensions: ['.ts', '.js', '.css', '.html']
+      extensions: ['.ts', '.js', '.css', '.html', '.xlsx']
     },
     module: {
       rules: [
@@ -31,6 +31,10 @@ module.exports = (_, argv) => {
         {
           test: /\.css?$/,
           use: ['style-loader', 'css-loader']
+        },
+        {
+          test: /\.xlsx?$/,
+          type: 'asset/resource'
         }
       ],
     },
