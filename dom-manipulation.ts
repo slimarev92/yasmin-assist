@@ -1,4 +1,5 @@
-import { Classification, Language, Term } from "./types.js";
+import { Classification, Language, Term } from "./types";
+import "./style.css";
 
 const terms: Term[] = [
     {
