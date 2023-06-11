@@ -50,7 +50,7 @@ module.exports = (_, argv) => {
         chunks: ["google-custom"],
       })
     ],
-    devtool: mode === "development" ? "eval-cheap-source-map" : undefined
+    devtool: mode === "development" ? "source-map" : undefined
   }
 
   return config;

@@ -30,11 +30,19 @@ div.menu {
 
 div.hints {
     display: flex;
-    max-width: 69%;
+    max-width: 40%;
     margin-inline-end: 10px;
     gap: 5px;
 }
 
 .hint {
     min-width: 30px;
+}
+
+#row-num {
+    width: 10ch;
+}
+
+#upload {
+    display: none;
 }

@@ -10,6 +10,7 @@
     <div class="menu">
         <div id="curr-term"></div>
         <select>
+            <option></option>
             <option>אנשים</option>
             <option>מקומות</option>
             <option>כללי</option>
@@ -28,6 +29,11 @@
         </div>
 
         <button id="language"></button>
+        <input type="number" id="row-num"></input>
+        <button id="go-to-row">GO</button>
+        <button id="download">DOWNLOAD</button>
+        <input type="file" accept=".xlsx, .xls" id="upload"></input>
+        <button id="upload-btn">UPLOAD</button>
     </div>
     <div class="iframe-container">
         <iframe src="./google-custom.html" frameborder="0"></iframe>
