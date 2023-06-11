@@ -6,8 +6,8 @@ import { Term, Language, Classification } from "./types.js";
 
 const ENGLISH_COLUMN = "B";
 const HEBREW_COLUMN = "C";
-const HEBREW_HINT_FIRST_COLUMN_NUMBER = 4;
-const ENGLIGH_HINT_FIRST_COLUMN_NUMBER = 15;
+const HEBREW_HINT_FIRST_COLUMN_NUMBER = 3;
+const ENGLIGH_HINT_FIRST_COLUMN_NUMBER = 14;
 
 const keywordsSheetSubject = new Subject<XLSX.WorkSheet>();
 const currIndexSubject = new BehaviorSubject<number>(0); // TODO SASHA: START FROM TWO
