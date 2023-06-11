@@ -1,3 +1,9 @@
+@media (max-width: 1919px) {
+    html {
+        font-size: 12px;
+    }
+}
+
 * {
     margin: 0;
     font-family: sans-serif;
