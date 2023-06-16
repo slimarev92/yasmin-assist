@@ -2,10 +2,6 @@
     html {
         font-size: 12px;
     }
-
-    div.hints {
-        max-width: 40% !important;
-    }
 }
 
 * {
@@ -35,7 +31,7 @@ div.menu > * {
 
 div.hints {
     display: flex;
-    max-width: 47%;
+    max-width: 40%;
     margin-inline-end: 10px;
     gap: 5px;
 }
