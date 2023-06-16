@@ -19,14 +19,14 @@ body {
 
 div.menu {
     background-color: rgb(44, 149, 89);
-    padding: 10px;
+    padding: 0.5em;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.5em;
 }
 
 div.menu > * {
-    height: 33px;
+    height: 100%;
 }
 
 div.hints {
@@ -38,6 +38,7 @@ div.hints {
 
 .hint {
     min-width: 30px;
+    font-size: 0.9rem;
 }
 
 .iframe-container {
