@@ -1,5 +1,3 @@
-import "./google-custom-style.css";
-
 const ENGINE_IDS = ["b2c8e585118724176", "83f35701b6a984777", "d27d3a215df6b46ae"];
 
 function getRandom(min: number, max: number) {
