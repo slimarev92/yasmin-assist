@@ -3,6 +3,19 @@ import "./style.css";
 import { nextLine, prevLine, currTerm$, currLanguageSubject, switchLanguage, setClassification, downloadFile, goToRow, loadFile, updateHint } from "./terms-service";
 import { combineLatest, fromEvent } from "rxjs";
 
+function setUpHints() {
+    for (let i = 1; i < 8; i++) {
+        const input = document.getElementById(`hint${i}`) as HTMLInputElement;
+
+        fromEvent(input, "input", value => {
+            updateHint(i, input.value) 
+        }).subscribe();
+        currTerm$.subscribe(term => {
+            input.value = term.hints[i - 1];
+        });
+    }
+}
+
 const channel = new BroadcastChannel("google");
 
 const nextButton = document.getElementById("next") as HTMLButtonElement;
@@ -29,61 +42,46 @@ languageButton.addEventListener("click", () => {
     switchLanguage();
 });
 
-setTimeout(() => {
-    combineLatest([currTerm$, currLanguageSubject]).subscribe(([currTerm, currLanguage]) => {
-        const currText = currTerm.text;
-    
-        channel.postMessage(currText);
-        currTermDisplay.innerText = currText;
-    
-        document.querySelectorAll("option").forEach(el => {
-            el.selected = el.innerText === currTerm.classification;
-        });
-    
-        wikiIframe.src = `https://${currLanguage}.wikipedia.org/w/index.php?search=${currText}`;
+combineLatest([currTerm$, currLanguageSubject]).subscribe(([currTerm, currLanguage]) => {
+    const currText = currTerm.text;
 
-        prevButton.disabled = !currTerm.hasPrev;
-        nextButton.disabled = !currTerm.hasNext;
-        rowNumInput.value = currTerm.row + "";
+    channel.postMessage(currText);
+    currTermDisplay.innerText = currText;
+
+    document.querySelectorAll("option").forEach(el => {
+        el.selected = el.innerText === currTerm.classification;
     });
 
-    currLanguageSubject.subscribe(lang => {
-        languageButton.innerText = lang;
-        languageButton.dir = lang === "en" ? "ltr" : "rtl";
-    });
+    wikiIframe.src = `https://${currLanguage}.wikipedia.org/w/index.php?search=${currText}`;
 
-    fromEvent(select, "input").subscribe(e => {
-        setClassification(select.value as Classification);
-    });
+    prevButton.disabled = !currTerm.hasPrev;
+    nextButton.disabled = !currTerm.hasNext;
+    rowNumInput.value = currTerm.row + "";
+});
 
-    downloadButton.addEventListener("click", () => {
-        downloadFile();
-    });
+currLanguageSubject.subscribe(lang => {
+    languageButton.innerText = lang;
+    languageButton.dir = lang === "en" ? "ltr" : "rtl";
+});
 
-    goToRowButton.addEventListener("click", () => {
-        goToRow(+rowNumInput.value);
-    });
+fromEvent(select, "input").subscribe(e => {
+    setClassification(select.value as Classification);
+});
 
-    uploadButton.addEventListener("click", () => uploadInput.click());
+downloadButton.addEventListener("click", () => {
+    downloadFile();
+});
 
-    uploadInput.addEventListener("input", () => {
-        const file = uploadInput.files?.[0];
+goToRowButton.addEventListener("click", () => {
+    goToRow(+rowNumInput.value);
+});
 
-        file && loadFile(file);
-    });
+uploadButton.addEventListener("click", () => uploadInput.click());
 
-    setUpHints();
-}, 1100);
+uploadInput.addEventListener("input", () => {
+    const file = uploadInput.files?.[0];
 
-function setUpHints() {
-    for (let i = 1; i < 8; i++) {
-        const input = document.getElementById(`hint${i}`) as HTMLInputElement;
+    file && loadFile(file);
+});
 
-        fromEvent(input, "input", value => {
-            updateHint(i, input.value) 
-        }).subscribe();
-        currTerm$.subscribe(term => {
-            input.value = term.hints[i - 1];
-        });
-    }
-}
+setUpHints();
