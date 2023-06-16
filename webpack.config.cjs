@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = (_, argv) => {
   const mode = argv.mode;
@@ -57,6 +58,10 @@ module.exports = (_, argv) => {
       })
     ],
     devtool: mode === "development" ? "source-map" : undefined
+  }
+
+  if (mode === "production") {
+    config.plugins.push(new CssMinimizerPlugin());
   }
 
   return config;
