@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (_, argv) => {
   const mode = argv.mode;
@@ -30,7 +31,7 @@ module.exports = (_, argv) => {
         },
         {
           test: /\.css?$/,
-          use: ['style-loader', 'css-loader']
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
         },
         {
           test: /\.xlsx?$/,
@@ -48,6 +49,9 @@ module.exports = (_, argv) => {
         filename: "google-custom.html",
         template: "./google-custom.html",
         chunks: ["google-custom"],
+      }),
+      new MiniCssExtractPlugin({
+        filename: "[name].[contenthash].css"
       })
     ],
     devtool: mode === "development" ? "source-map" : undefined
