@@ -20,7 +20,7 @@ function initCommunication() {
 
 const scriptElement = document.createElement("script");
 
-scriptElement.src = `https://cse.google.com/cse.js?cx=${ENGINE_IDS[getRandom(0, 3)]}`;
+scriptElement.src = `https://cse.google.com/cse.js?cx=${ENGINE_IDS[getRandom(0, 2)]}`;
 scriptElement.async = true;
 
 document.body.appendChild(scriptElement);
