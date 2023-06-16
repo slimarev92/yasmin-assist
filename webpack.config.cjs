@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = (_, argv) => {
   const mode = argv.mode;
@@ -32,10 +33,6 @@ module.exports = (_, argv) => {
         {
           test: /\.css?$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader']
-        },
-        {
-          test: /\.xlsx?$/,
-          type: 'asset/resource'
         }
       ],
     },
@@ -52,6 +49,11 @@ module.exports = (_, argv) => {
       }),
       new MiniCssExtractPlugin({
         filename: "[name].[contenthash].css"
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: "./assets", to: "./assets" },
+        ]
       })
     ],
     devtool: mode === "development" ? "source-map" : undefined

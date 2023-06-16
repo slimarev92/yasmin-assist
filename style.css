@@ -2,21 +2,16 @@
     html {
         font-size: 12px;
     }
+
+    div.hints {
+        max-width: 40% !important;
+    }
 }
 
 * {
     margin: 0;
     font-family: sans-serif;
     font-size: 1.25rem;
-}
-
-.iframe-container {
-    flex-grow: 1;
-    display: flex;
-}
-
-.iframe-container > * {
-    flex: 1 1 auto;
 }
 
 body {
@@ -30,13 +25,17 @@ div.menu {
     background-color: rgb(44, 149, 89);
     padding: 10px;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 10px;
+}
+
+div.menu > * {
+    height: 33px;
 }
 
 div.hints {
     display: flex;
-    max-width: 40%;
+    max-width: 47%;
     margin-inline-end: 10px;
     gap: 5px;
 }
@@ -45,10 +44,35 @@ div.hints {
     min-width: 30px;
 }
 
+.iframe-container {
+    flex-grow: 1;
+    display: flex;
+}
+
+.iframe-container > * {
+    flex: 1 1 auto;
+}
+
+#curr-term-container {
+    width: 23%;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 #row-num {
     width: 10ch;
 }
 
 #upload {
     display: none;
+}
+
+.icon {
+    width: 20px;
 }

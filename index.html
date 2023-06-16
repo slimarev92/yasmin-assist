@@ -8,7 +8,9 @@
 </head>
 <body>
     <div class="menu">
-        <div id="curr-term"></div>
+        <div id="curr-term-container">
+            <div id="curr-term"></div>
+        </div>
         <select>
             <option></option>
             <option>אנשים</option>
@@ -31,9 +33,13 @@
         <button id="language"></button>
         <input type="number" id="row-num"></input>
         <button id="go-to-row">GO</button>
-        <button id="download">DOWNLOAD</button>
+        <button title="הורדה" id="download">
+            <img class="icon" src="./assets/download.svg">
+        </button>
         <input type="file" accept=".xlsx, .xls" id="upload"></input>
-        <button id="upload-btn">UPLOAD</button>
+        <button title="פתיחת קובץ" id="upload-btn">
+            <img class="icon" src="./assets/open-folder.svg">
+        </button>
     </div>
     <div class="iframe-container">
         <iframe src="./google-custom.html" frameborder="0"></iframe>

@@ -47,6 +47,7 @@ combineLatest([currTerm$, currLanguageSubject]).subscribe(([currTerm, currLangua
 
     channel.postMessage(currText);
     currTermDisplay.innerText = currText;
+    currTermDisplay.title = currText;
 
     document.querySelectorAll("option").forEach(el => {
         el.selected = el.innerText === currTerm.classification;
